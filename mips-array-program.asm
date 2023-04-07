@@ -1,4 +1,4 @@
-# ----------------------------------------- #
+# ----- MACRO FOR PRINTING STRINGS ----- #
 .macro print_str %str
 	.data
 		msg: .asciiz %str
@@ -7,13 +7,19 @@
 		li v0, 4
 		syscall
 .end_macro
-# ----------------------------------------- #
+
+
+# ----- GLOBAL CONSTANTS FOR ARRAY ITERATING ----- #
 .eqv ARR_SIZE 5
 .eqv END_INDEX 4
-# ----------------------------------------- #
+
+
+# ----- GLOBAL VARIABLE FOR ARRAY ----- #
 .data
 	arr: .byte 0 0 0 0 0
-# ----------------------------------------- #
+
+
+# ----- MAIN FUNCTION/SUB-ROUTINE ----- #
 .text
 .globl main
 main:
@@ -31,7 +37,7 @@ main:
 	j exit
 
 
-# ----------------------------------------- #
+# ----- SUB-ROUTINE FOR PRINTING THE ARRAY ----- #
 print_arr:
 	push ra
 	la t0, arr
@@ -63,7 +69,8 @@ print_arr:
 	pop ra
 	jr ra
 	
-# ----------------------------------------- #
+	
+# ----- SUB-ROUTINE FOR POPULATING ARRAY WITH USER INPUT ----- #
 pop_arr:
 	push ra
 	
@@ -92,7 +99,8 @@ pop_arr:
 	pop ra
 	jr ra
 
-# ----------------------------------------- #
+
+# ----- FUNCTION TO PRINT NEW LINES ----- #
 print_newline:
 	push ra
 	li a0, '\n'
@@ -101,7 +109,8 @@ print_newline:
 	pop ra
 	jr ra
 
-# ----------------------------------------- #
+
+# ----- ARRAY SORTING ALGORITHM ----- #
 sort_arr:
 	push ra
 	la t0, arr
@@ -140,7 +149,8 @@ sort_arr:
 	pop ra
 	jr ra
 
-# ----------------------------------------- #
+
+# ----- FUNCTION TO PRINT ARRAY ON ONE LINE ------ #
 print_arr_oneline:
 	push ra
 	# print array on one line
@@ -173,7 +183,8 @@ print_arr_oneline:
 	pop ra
 	jr ra
 
-# ----------------------------------------- #
+
+# ----- EXIT AND END PROGRAM ----- #
 exit:
 	li v0, 10
 	syscall
